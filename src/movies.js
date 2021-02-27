@@ -16,12 +16,13 @@ function howManyMovies(someArr) {
 
 
     let steven = someArr.filter(function (el) {
-        return el.director === "Steven Spielberg";
+        return el.director === "Steven Spielberg" && el.genre.includes("Drama");
 
     });
 
-    console.log(steven);
-    return steven;
+    console.log(steven.length);
+
+    return steven.length;
 
 }
 

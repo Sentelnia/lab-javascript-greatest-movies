@@ -66,8 +66,8 @@ function dramaMoviesRate(someArr){
 // Iteration 5: Ordering by year - Order by year, ascending (in growing order)
 
 function orderByYear(someArr){
-    // on clone l'array
-    var cloneArr = someArr.slice()
+    // on clone l'array pour ne pas toucher à l'originale
+    var cloneArr = someArr.slice();
     // on met par ordre croissant d'année
     cloneArr.sort(function (a, b) {
         if (a.year < b.year) return -1;
@@ -80,6 +80,20 @@ function orderByYear(someArr){
 }
 
 // Iteration 6: Alphabetic Order - Order by title and print the first 20 titles
+
+function orderAlphabetically(someArr){
+    // on créé un clone de l'array en prévision du tri
+    var cloneArray = someArr.slice();
+    // on créé une nouvelle array avec juste les titres de film
+    var titleArray = cloneArray.map(function (movie) {
+        return movie.title;
+    });
+    // on classe les films par ordre alphabétique
+    titleArray.sort();
+    //on retourne les 20 premiers films
+    return titleArray.slice(0, 20);
+}
+
 
 // BONUS - Iteration 7: Time Format - Turn duration of the movies from hours to minutes
 

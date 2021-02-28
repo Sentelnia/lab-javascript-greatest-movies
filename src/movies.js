@@ -65,7 +65,19 @@ function dramaMoviesRate(someArr){
 
 // Iteration 5: Ordering by year - Order by year, ascending (in growing order)
 
-
+function orderByYear(someArr){
+    // on clone l'array
+    var cloneArr = someArr.slice()
+    // on met par ordre croissant d'année
+    cloneArr.sort(function (a, b) {
+        if (a.year < b.year) return -1;
+        if (a.year > b.year) return 1;
+        // si même année , on classe par ordre alphabetique
+        if (a.year === b.year && a.title < b.title) return -1;
+        if (a.year === b.year && a.title > b.title) return 1;     
+    });
+    return cloneArr;
+}
 
 // Iteration 6: Alphabetic Order - Order by title and print the first 20 titles
 

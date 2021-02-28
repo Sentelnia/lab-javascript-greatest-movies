@@ -31,8 +31,12 @@ function ratesAverage(someArr){
     if (someArr.length === 0) {
         return 0;
     }
+    // on filtre d'abord tout les films qui ont une rate
+    let getRate = someArr.filter(function(el) {
+        return el.rate;
+    });
     // on réduit la rate de tout les films à un seul nombre
-    let rateCumul = someArr.reduce(function (acc, value){
+    let rateCumul = getRate.reduce(function (acc, value){
         return acc + value.rate;
     }, 0);
     // on calcul ensuite la moyenne de cette rate en la divisant par le nombre de films

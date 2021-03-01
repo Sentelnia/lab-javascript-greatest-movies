@@ -101,4 +101,56 @@ function orderAlphabetically(someArr){
 
 // BONUS - Iteration 7: Time Format - Turn duration of the movies from hours to minutes
 
+function turnHoursToMinutes(someArr){
+    //on commence la fonction.map pour faire une boucle et créer une nouvelle Array
+    let newArray = someArr.map(function (movie){
+    //fonction pour changer les heures en min
+    let duration = movie.duration;
+    //array [nh, nmin]
+    let durationArr = duration.split(" ");
+    let min = 0;
+        //si array [nh] ou [nmin]
+        if (durationArr.length < 2){
+            //si array[nh]
+            if (durationArr[0].includes("h")) {
+              // on sort le chiffre de l'indice [0](donc des heures)
+                let hoursArr = durationArr[0].split('h');
+                // on multiplie ce chiffre par 60 pour le rendre en min
+                let hoursMin = hoursArr[0]*60;
+                min += hoursMin; 
+                //si array[nmin]
+            } else {
+                // on  sort le chiffre des minutes de l'array 
+                let minArr = durationArr[0].split('min');
+                min += Number(minArr[0]); 
+            }
+        // si array[nh, nmin]
+        } else {
+            // on sort le chiffre de l'indice [0](donc des heures de array [nh, nmin])
+            let hoursArr = durationArr[0].split('h');
+            // on multiplie ce chiffre par 60 pour le rendre en min
+            let hoursMin = hoursArr[0]*60;
+            // on  sort le chiffre des minutes de l'array  [nh, nmin]
+            let minArr = durationArr[1].split('min');
+            // on ajoute ce chiffre à la nouvelle heure convertie en min
+            min += hoursMin + Number(minArr[0]);
+            
+        }
+     
+    // on retourne une nouvelle Array pour movies qui remplace les heures en min
+    return  {
+        title: movie.title,
+        year: movie.year,
+        director:movie.director,
+        duration: min, 
+        genre: movie.genre,
+        rate: movie.rate
+      }
+      
+    });
+    return newArray;
+
+
+}
+
 // BONUS - Iteration 8: Best yearly rate average - Best yearly rate average
